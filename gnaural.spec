@@ -1,5 +1,5 @@
 Name:		gnaural
-Version:	1.0.20110215
+Version:	1.0.20110606
 Release:	1
 Summary:	A multi-platform programmable binaural-beat generator
 Group:		Sound
@@ -9,8 +9,7 @@ Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		gnaural-1.0.20110215-icon.patch
 Patch1:		gnaural-1.0.20110215-xdg-menu.patch
 BuildRequires:	gtk2-devel libglade2-devel libsndfile-devel
-BuildRequires:	portaudio-devel
-BuildRequires:	desktop-file-utils
+BuildRequires:	desktop-file-utils gettext-devel
 Requires:	hicolor-icon-theme
 
 %description
@@ -44,4 +43,3 @@ autoreconf -f
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.xpm
 %{_icons48dir}/%{name}.png
-

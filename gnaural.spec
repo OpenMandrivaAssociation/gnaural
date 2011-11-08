@@ -42,4 +42,4 @@ autoreconf -f
 %{_datadir}/%{name}/%{name}.glade
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.xpm
-%{_icons48dir}/%{name}.png
+%{_iconsdir}/hicolor/48x48/apps/%{name}.png

@@ -8,7 +8,7 @@ URL:		http://gnaural.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		gnaural-1.0.20110215-icon.patch
 Patch1:		gnaural-1.0.20110215-xdg-menu.patch
-BuildRequires:	gtk2-devel libglade2-devel libsndfile-devel
+BuildRequires:	gtk2-devel libglade2-devel libsndfile-devel portaudio-devel
 BuildRequires:	desktop-file-utils gettext-devel
 Requires:	hicolor-icon-theme
 

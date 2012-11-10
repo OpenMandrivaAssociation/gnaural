@@ -1,0 +1,53 @@
+--- gnaural-1.0.20110215/gnaural.desktop.in.xdg~	2008-08-22 17:25:25.000000000 +0200
++++ gnaural-1.0.20110215/gnaural.desktop.in	2011-06-07 14:44:52.931124931 +0200
+@@ -1,23 +1,17 @@
+ [Desktop Entry]
+ Version=1.0
+ Type=Application
+-Encoding=UTF-8
+ TryExec=gnaural
+ Exec=gnaural %F
+-Icon=@PACKAGE_DATA_DIR_USR_SHARE@/@PACKAGE@/pixmaps/gnaural-icon.png
++Icon=gnaural
++StartupNotify=true
+ Terminal=false
+ Categories=AudioVideo;AudioVideoEditing;Audio;Network;GTK;GNOME;Application;
+ Name=Gnaural
+-GenericName=Audio binaural beat editor/generator
+ Comment=Audio Binaural Beat Editor/Generator
+ Name[en_CA]=Gnaural
+ Name[en_GB]=Gnaural
+ Name[fr]=Gnaural
+-GenericName=Binaural Beat Generator
+-GenericName[en_CA]=Binaural Beat Generator
+-GenericName[en_GB]=Binaural Beat Generator
+-GenericName[fr]=Générateur de battements binauraux
+ Comment[en_CA]=An Audio Binaural Beat Generator
+ Comment[en_GB]=An Audio Binaural Beat Generator
+ Comment[fr]=Générateur de battements binauraux
+-
+--- gnaural-1.0.20110215/Makefile.am.xdg~	2010-06-28 21:10:36.000000000 +0200
++++ gnaural-1.0.20110215/Makefile.am	2011-06-07 14:44:08.253683477 +0200
+@@ -15,15 +15,14 @@ EXTRA_DIST = config.rpath m4/ChangeLog
+ install-data-local:
+ 	@$(NORMAL_INSTALL)
+ 	if test -d $(srcdir)/pixmaps; then \
+-	  $(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/pixmaps; \
+-	  for pixmap in $(srcdir)/pixmaps/*; do \
+-	    if test -f $$pixmap; then \
+-	      $(INSTALL_DATA) $$pixmap $(DESTDIR)$(pkgdatadir)/pixmaps; \
+-	    fi \
+-	  done \
++	  $(mkinstalldirs) $(DESTDIR)$(datadir)/pixmaps; \
++	  $(INSTALL_DATA) $(srcdir)/pixmaps/gnaural-icon.xpm $(DESTDIR)$(datadir)/pixmaps/gnaural.xpm; \
++	  $(mkinstalldirs) $(DESTDIR)$(datadir)/icons/hicolor/48x48/apps; \
++	  $(INSTALL_DATA) $(srcdir)/pixmaps/gnaural-icon.png $(DESTDIR)$(datadir)/icons/hicolor/48x48/apps/gnaural.png; \
+ 	fi; \
+-	$(mkinstalldirs) $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
+-	$(INSTALL_DATA) gnaural.desktop $(DESTDIR)$(datadir)/gnome/apps/Multimedia; \
++	$(mkinstalldirs) $(DESTDIR)$(datadir)/applications; \
++	desktop-file-install --dir=$(DESTDIR)$(datadir)/applications gnaural.desktop; \
++	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir); \
+ 	$(INSTALL_DATA) src/gnaural.glade $(DESTDIR)$(pkgdatadir);
+ 
+ dist-hook:

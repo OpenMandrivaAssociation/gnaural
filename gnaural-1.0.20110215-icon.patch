@@ -1,0 +1,50 @@
+--- gnaural-1.0.20110215/configure.in.icon~	2011-06-07 13:42:36.897831775 +0200
++++ gnaural-1.0.20110215/configure.in	2011-06-07 13:42:43.943743689 +0200
+@@ -86,6 +86,8 @@ dnl PACKAGE_DATA_DIR_USR_SHARE="${datadi
+ dnl AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR_USR_SHARE, "${datadir}", PACKAGE_DATA_DIR_USR_SHARE)
+ 
+ PACKAGE_DATA_DIR_USR_SHARE="/usr/share"
++AC_DEFINE_UNQUOTED(PACKAGE_DATA_DIR_USR_SHARE, "$PACKAGE_DATA_DIR_USR_SHARE", [Data dir.])
++
+ AC_SUBST(PACKAGE_DATA_DIR_USR_SHARE)
+ 
+ AC_OUTPUT([
+--- gnaural-1.0.20110215/src/main.c.icon~	2011-06-07 13:33:40.510537540 +0200
++++ gnaural-1.0.20110215/src/main.c	2011-06-07 13:52:56.122090408 +0200
+@@ -82,6 +82,7 @@
+ 
+ //20100528: on where linux distros will install presets:
+ #define GNAURAL_PRESET_DIR PACKAGE_DATA_DIR"/"PACKAGE"/presets"
++#define GNAURAL_ICON PACKAGE_DATA_DIR"/icons/hicolor/48x48/apps/gnaural.png"
+ #define GNAURAL_FILEFILTERSTRING "~Gnaural Files~*.gnaural,~Text Files~*.txt,~All Files~,*"
+ #define GNAURAL_GUI_UPDATEINTERVAL 128  //64
+ 
+@@ -3236,23 +3237,22 @@ void main_SetIcon ()
+   strcat (main_sPathTemp, "gnaural-icon.png");
+  }
+  else
+- {      //fail
++ {      //failsprintf (main_sPathTemp, "gnaural-icon.png");
+   sprintf (main_sPathTemp, "gnaural-icon.png");
+  }
+-#endif
+ 
+-#ifndef GNAURAL_WIN32
+- sprintf (main_sPathTemp, "%s/%s", main_sPathGnaural, "gnaural-icon.png");
+-#endif
+  FILE *stream;
+ 
+  if ((stream = fopen (main_sPathTemp, "wb")) == NULL)
+  {
+-  return;
++     return;
+  }
+  fwrite (&main_GnauralIcon, sizeof (main_GnauralIcon), 1, stream);
+  fclose (stream);
+  gtk_window_set_default_icon_from_file (main_sPathTemp, NULL);
++#else
++ gtk_window_set_default_icon_from_file (GNAURAL_ICON, NULL);
++#endif
+ }
+ 
+ //======================================

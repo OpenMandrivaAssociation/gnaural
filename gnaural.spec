@@ -1,6 +1,6 @@
 Name:		gnaural
 Version:	1.0.20110606
-Release:	2
+Release:	3
 Summary:	A multi-platform programmable binaural-beat generator
 Group:		Sound
 License:	GPLv2+

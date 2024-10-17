@@ -4,7 +4,7 @@ Release:	3
 Summary:	A multi-platform programmable binaural-beat generator
 Group:		Sound
 License:	GPLv2+
-URL:		http://gnaural.sourceforge.net/
+URL:		https://gnaural.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		gnaural-1.0.20110215-icon.patch
 Patch1:		gnaural-1.0.20110215-xdg-menu.patch

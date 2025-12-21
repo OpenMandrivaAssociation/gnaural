@@ -8,6 +8,11 @@ URL:		https://gnaural.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		gnaural-1.0.20110215-icon.patch
 Patch1:		gnaural-1.0.20110215-xdg-menu.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gtk2-devel
 BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  sndfile-devel
